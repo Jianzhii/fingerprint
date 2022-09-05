@@ -104,4 +104,9 @@ export class FingerprintService {
             where: { counter: counter },
         });
     }
+
+    async getExistingFPsById(id: string) {
+        const fps = await this.fpDataRepository.find({ where: { id: id } });
+        return new Set(Array.from(new Set(fps)).sort());
+    }
 }
