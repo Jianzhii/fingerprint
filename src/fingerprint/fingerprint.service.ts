@@ -94,4 +94,14 @@ export class FingerprintService {
 
         return count === 1;
     }
+
+    async getExistingFPById(id: string) {
+        return await this.fpDataRepository.findOne({ where: { id: id } });
+    }
+
+    async getExistingFPByCounter(counter: number) {
+        return await this.fpDataRepository.findOne({
+            where: { counter: counter },
+        });
+    }
 }
