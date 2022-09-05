@@ -1,26 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { CreateFingerprintDto } from './dto/create-fingerprint.dto';
-import { UpdateFingerprintDto } from './dto/update-fingerprint.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { FpDataEntityModel } from './entities/fpdata.model';
 
 @Injectable()
 export class FingerprintService {
-    create(createFingerprintDto: CreateFingerprintDto) {
-        return 'This action adds a new fingerprint';
-    }
+    constructor(
+        @InjectRepository(FpDataEntityModel)
+        private fingerPrintRepository: Repository<FpDataEntityModel>,
+    ) {}
 
-    findAll() {
+    fpNoJs(request) {
+        const cookie = request.cookies.get('amiunque');
+
+        let id: string;
+        if (cookie === null) {
+            id = 'Not supported';
+        } else {
+            id = cookie.value();
+        }
+
         return `This action returns all fingerprint`;
-    }
-
-    findOne(id: number) {
-        return `This action returns a #${id} fingerprint`;
-    }
-
-    update(id: number, updateFingerprintDto: UpdateFingerprintDto) {
-        return `This action updates a #${id} fingerprint`;
-    }
-
-    remove(id: number) {
-        return `This action removes a #${id} fingerprint`;
     }
 }

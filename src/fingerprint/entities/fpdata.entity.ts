@@ -1,7 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import { BaseEntity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('fpdata')
-export class Fingerprint {
+export class FpDataEntity extends BaseEntity {
     @PrimaryGeneratedColumn()
     counter: number;
 
@@ -12,7 +11,7 @@ export class Fingerprint {
     addressHttp: string;
 
     @Column('datetime', { nullable: false })
-    time: Timestamp;
+    time: Date;
 
     @Column('varchar', { length: 300, nullable: true, default: null })
     userAgentHttp: string;
