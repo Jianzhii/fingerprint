@@ -5,105 +5,105 @@ export class Fingerprint {
     @PrimaryGeneratedColumn()
     counter: number;
 
-    @Column()
+    @Column('varchar', { length: 50 })
     id: string;
 
-    @Column()
-    time: Timestamp;
-
-    @Column()
+    @Column('varchar', { length: 50, nullable: false })
     addressHttp: string;
 
-    @Column()
+    @Column('datetime', { nullable: false })
+    time: Timestamp;
+
+    @Column('varchar', { length: 300, nullable: true, default: null })
     userAgentHttp: string;
 
-    @Column()
+    @Column('varchar', { length: 300, nullable: true, default: null })
     acceptHttp: string;
 
-    @Column()
+    @Column('varchar', { length: 100, nullable: false })
     hostHttp: string;
 
-    @Column()
+    @Column('varchar', { length: 100, nullable: false })
     connectionHttp: string;
 
-    @Column()
+    @Column('varchar', { length: 200, nullable: false })
     encodingHttp: string;
 
-    @Column()
+    @Column('varchar', { length: 200, nullable: false })
     languageHttp: string;
 
-    @Column()
+    @Column('varchar', { length: 200, nullable: false })
     orderHttp: string;
 
-    @Column()
-    pluginsJs: string;
+    @Column('text', { nullable: true, default: null })
+    pluginsJS: string;
 
-    @Column()
-    platformJs: string;
+    @Column('varchar', { length: 50, nullable: true, default: null })
+    platformJS: string;
 
-    @Column()
-    cookiesJs: string;
+    @Column('varchar', { length: 10, nullable: false })
+    cookiesJS: string;
 
-    @Column()
-    dntJs: string;
+    @Column('varchar', { length: 10, nullable: false })
+    dntJS: string;
 
-    @Column()
-    timezoneJs: string;
+    @Column('varchar', { length: 10, nullable: false })
+    timezoneJS: string;
 
-    @Column()
-    resolutionJs: string;
+    @Column('varchar', { length: 20, nullable: false })
+    resolutionJS: string;
 
-    @Column()
-    localJs: string;
+    @Column('varchar', { length: 10, nullable: false })
+    localJS: string;
 
-    @Column()
-    sessionJs: string;
+    @Column('varchar', { length: 10, nullable: false })
+    sessionJS: string;
 
-    @Column()
-    ieDataJs: string;
+    @Column('varchar', { length: 10, nullable: false })
+    IEDataJS: string;
 
-    @Column()
-    canvasJs: string;
+    @Column('mediumtext', { nullable: true, default: null })
+    canvasJS: string;
 
-    @Column()
+    @Column('mediumtext', { nullable: true, default: null })
+    webGLJs: string;
+
+    @Column('mediumtext', { nullable: true, default: null })
     fontsFlash: string;
 
-    @Column()
+    @Column('varchar', { length: 50, nullable: true, default: null })
     resolutionFlash: string;
 
-    @Column()
+    @Column('varchar', { length: 50, nullable: true, default: null })
     languageFlash: string;
 
-    @Column()
+    @Column('varchar', { length: 50, nullable: true, default: null })
     platformFlash: string;
 
-    @Column()
+    @Column('varchar', { length: 10, nullable: false })
     adBlock: string;
 
-    @Column()
+    @Column('varchar', { length: 200, nullable: false })
+    vendorWebGLJS: string;
+
+    @Column('varchar', { length: 200, nullable: false })
+    rendererWebGLJS: string;
+
+    @Column('varchar', { length: 10, nullable: true, default: null })
     octaneScore: string;
 
-    @Column()
+    @Column('varchar', { length: 10, nullable: true, default: null })
     sunspiderTime: string;
 
-    @Column()
-    webGlJs: string;
-
-    @Column()
-    vendorWebGljs: string;
-
-    @Column()
-    rendererWebGljs: string;
-
-    @Column()
+    @Column('varchar', { length: 40, nullable: false })
     pluginsJsHashed: string;
 
-    @Column()
+    @Column('varchar', { length: 40, nullable: false })
     canvasJsHashed: string;
 
-    @Column()
+    @Column('varchar', { length: 40, nullable: false })
     webGLJsHashed: string;
 
-    @Column()
+    @Column('varchar', { length: 40, nullable: false })
     fontsFlashHashed: string;
 }
