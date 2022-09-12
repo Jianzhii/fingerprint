@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Timestamp } from 'typeorm';
 import { FpDataEntityModel } from './entities/fpdata.model';
 
 @Injectable()
@@ -10,6 +10,7 @@ export class FingerprintService {
         private fpDataRepository: Repository<FpDataEntityModel>,
     ) {}
 
+    // TODO: put as interceptor
     fpNoJs(request) {
         const cookie = request.cookies.get('amiunque');
 
@@ -109,4 +110,41 @@ export class FingerprintService {
         const fps = await this.fpDataRepository.find({ where: { id: id } });
         return new Set(Array.from(new Set(fps)).sort());
     }
+
+    // async createFUll(
+    //     id: string,
+    //     addressHttp: string,
+    //     time: Timestamp,
+    //     userAgentHttp: string,
+    //     acceptHttp: string,
+    //     hostHttp: string,
+    //     connectionHttp: string,
+    //     encodingHttp: string,
+    //     languageHttp: string,
+    //     orderHttp: string,
+    //     pluginsJS: string,
+    //     platformJS: string,
+    //     cookiesJS: string,
+    //     dntJS: string,
+    //     timezoneJS: string,
+    //     resolutionJS: string,
+    //     localJS: string,
+    //     sessionJS: string,
+    //     ieDataJS: string,
+    //     canvasJS: string,
+    //     webGLJs: string,
+    //     fontsFlash: string,
+    //     resolutionFlash: string,
+    //     languageFlash: string,
+    //     platformFlash: string,
+    //     adBlock: string,
+    //     vendorWebGLJS: string,
+    //     rendererWebGLJS: string,
+    //     octaneScore: string,
+    //     sunspiderTime: string,
+    //     pluginsJsHashed: string,
+    //     canvasJsHashed: string,
+    //     webGLJsHashed: string,
+    //     fontsFlashHashed: string,
+    // ) {}
 }
